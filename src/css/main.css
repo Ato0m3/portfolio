@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.theme-light {
+  --bg-background-primary: white;
+  --text-primary:  #1A202C;
+  --text-secondary: #2D3748;
+  --text-tertiary: #4A5568;
+  --text-disabled: theme("colors.gray.600");
+  --color-primary: #baffc9;
+  --color-secondary: #bae1ff;
+}
+
+.theme-dark {
+  --bg-background-primary: #1A202C;
+  --text-primary:  #F7FAFC;
+  --text-secondary: #EDF2F7;
+  --text-tertiary: #E2E8F0;
+  --text-disabled: theme("colors.gray.600");
+  --color-primary: theme("colors.indigo.600");
+  --color-secondary: theme("colors.purple.600");
+}
