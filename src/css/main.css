@@ -4,20 +4,22 @@
 
 .theme-light {
   --bg-background-primary: white;
+  --bg-background-secondary: #f7fafc;
   --text-primary:  #1A202C;
   --text-secondary: #2D3748;
   --text-tertiary: #4A5568;
   --text-disabled: theme("colors.gray.600");
-  --color-primary: #baffc9;
-  --color-secondary: #bae1ff;
+  --color-primary: theme("colors.pink.200");
+  --color-secondary: theme("colors.purple.300");
 }
 
 .theme-dark {
   --bg-background-primary: #1A202C;
+  --bg-background-secondary: #1f2735;
   --text-primary:  #F7FAFC;
   --text-secondary: #EDF2F7;
   --text-tertiary: #E2E8F0;
   --text-disabled: theme("colors.gray.600");
-  --color-primary: theme("colors.indigo.600");
-  --color-secondary: theme("colors.purple.600");
+  --color-primary: theme("colors.red.500");
+  --color-secondary: theme("colors.orange.400");
 }

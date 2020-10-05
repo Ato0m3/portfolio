@@ -34,6 +34,7 @@ module.exports = {
         secondary: 'var(--color-secondary)', 
         background: {
           theme: 'var(--bg-background-primary)',
+          secondary: 'var(--bg-background-secondary)',
         },
         text: {
           primary: 'var(--text-primary)',

@@ -1,31 +1,35 @@
 <template>
   <div
-    class="bg-background-theme text-text-primary h-screen pl-40 pr-40"
+    class="bg-background-theme text-text-primary h-screen xl:pl-64 xl:pr-64"
     :class="theme"
   >
     <div class="h-1" />
-    <header class="flex mt-2 justify-center">
-      <nav class="flex-grow flex justify-end align-middle m-2">
+    <header class="flex m-4 xl:m-0 xl:mt-4 justify-center select-none">
+      <div class="flex justify-center">
+        <g-image class="rounded-full w-10 h-10 shadow-xl" src="../logo.jpeg" />
+        <!-- <div class="ml-3 place-self-center text-lg text-text-secondary">GuillaumeLacoste</div> -->
+      </div>
+      <nav class="flex-grow flex justify-end align-middle">
         <theme-switcher
           class="mr-5"
           :theme="theme"
           @themeUpdated="updateTheme"
         />
         <g-link
-          v-for="(route, name) in navRoutes"
+          v-for="(path, name) in navRoutes"
           v-bind:key="name"
           :class="
-            isCurrentRoute(route) ? 'text-text-primary' : 'text-text-disabled'
+            isCurrentRoute(path) ? 'text-text-primary border-b-4 border-primary pointer-events-none' : 'text-text-disabled'
           "
-          class="nav_link relative"
-          :to="route"
+          class="nav_link relative mr-5 place-self-center"
+          :to="path"
           >{{ name }}
-          <div
-            v-if="isCurrentRoute(route)"
-            class="h-2 w-2 rounded-full bg-primary absolute"
-            style="left: 50%"
-          />
         </g-link>
+        <context-menu
+          title="Others"
+          :subItems="contextMenuSubItems"
+          class="nav_link relative text-text-disabled place-self-center"
+        />
       </nav>
     </header>
     <slot />
@@ -42,10 +46,12 @@ query {
 
 <script>
 import ThemeSwitcher from "../components/ThemeSwitcher";
+import ContextMenu from "../components/ContextMenu";
 
 export default {
   components: {
     ThemeSwitcher,
+    ContextMenu
   },
 
   mounted() {
@@ -57,9 +63,14 @@ export default {
       theme: "",
       navRoutes: {
         Home: "/",
-        "About me": "/about/",
+        "SideProjects": "/side-projects/",
         Resume: "/resume/",
       },
+      contextMenuSubItems: {
+        "Leadership&Management": "",
+        "Sports": "test",
+        "Test3": "test"
+      }
     };
   },
   methods: {
@@ -78,10 +89,11 @@ export default {
 .nav_link {
   font-size: theme("fontSize.xl");
   font-weight: theme("fontWeight.bold");
-  margin-right: theme("spacing.5");
+  /* margin-right: theme("spacing.5");s */
+  cursor: pointer;
 }
 
 .nav_link:hover {
-  color: theme("colors.text.tertiary");
+  color: theme("colors.text.secondary");
 }
 </style>

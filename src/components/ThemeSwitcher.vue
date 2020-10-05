@@ -8,7 +8,7 @@
     />
     <font-awesome
       v-else
-      :icon="['far', 'sun']"
+      :icon="['fas', 'sun']"
       size="lg"
       class="transition duration-300 ease-in-out text-yellow-500 hover:text-yellow-300"
     />
