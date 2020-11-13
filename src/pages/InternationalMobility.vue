@@ -1,5 +1,5 @@
 <template>
-  <Layout title="Side Projects">
+  <Layout title="International mobility">
       <WIP />
   </Layout>
 </template>
@@ -13,7 +13,7 @@ export default {
     WIP
   },
   metaInfo: {
-    title: "Side projects",
+    title: "International mobility",
   },
 };
 </script>

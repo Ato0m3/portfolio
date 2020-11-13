@@ -1,10 +1,10 @@
 <template>
   <div
-    class="bg-background-theme text-text-primary h-screen xl:pl-64 xl:pr-64"
+    class=" flex flex-col bg-background-theme text-text-primary h-full p-4 xl:pt-4 xl:p-0 xl:pl-64 xl:pr-64"
     :class="theme"
   >
     <div class="h-1" />
-    <header class="flex m-4 xl:m-0 xl:mt-4 justify-center select-none">
+    <header class="flex justify-center select-none">
       <div class="flex justify-center">
         <g-image class="rounded-full w-10 h-10 shadow-xl" src="../logo.jpeg" />
         <!-- <div class="ml-3 place-self-center text-lg text-text-secondary">GuillaumeLacoste</div> -->
@@ -32,14 +32,40 @@
         />
       </nav>
     </header>
-    <slot />
+    <main class="">
+      <div class="text-primary text-5xl mt-8">{{title}}</div>
+      <slot />
+    </main>
+    <footer class="bg-background-secondary h-20 flex flex-col items-center justify-center pt-3">
+      <div>
+        <g-link class="social_icon" to="https://github.com/Ato0m3">
+          <font-awesome
+            :icon="['fab', 'github']"
+            size="2x"
+          />
+        </g-link>
+        <g-link class="social_icon" to="https://gitlab.com/Ato0m3">
+          <font-awesome
+            :icon="['fab', 'gitlab']"
+            size="2x"
+          />
+        </g-link>
+        <g-link class="social_icon" to="https://www.linkedin.com/in/guillaume-lacoste-711b73146/">
+          <font-awesome
+            :icon="['fab', 'linkedin']"
+            size="2x"
+          />
+        </g-link>
+      </div>
+      <div class="mt-1 text-text-disabled">© 2020 Guillaume Lacoste</div>
+    </footer>
   </div>
 </template>
 
 <static-query>
 query {
   metadata {
-    siteName
+    siteName,
   }
 }
 </static-query>
@@ -49,6 +75,11 @@ import ThemeSwitcher from "../components/ThemeSwitcher";
 import ContextMenu from "../components/ContextMenu";
 
 export default {
+  props: {
+    title: {
+      type: String,
+    },
+  },
   components: {
     ThemeSwitcher,
     ContextMenu
@@ -63,13 +94,13 @@ export default {
       theme: "",
       navRoutes: {
         Home: "/",
-        "SideProjects": "/side-projects/",
         Resume: "/resume/",
+        "SideProjects": "/side-projects/",
       },
       contextMenuSubItems: {
-        "Leadership&Management": "",
-        "Sports": "test",
-        "Test3": "test"
+        "International mobility": "/international-mobility/",
+        "Leadership&Management": "/leadership-management/",
+        "Sports": "sports",
       }
     };
   },
@@ -95,5 +126,13 @@ export default {
 
 .nav_link:hover {
   color: theme("colors.text.secondary");
+}
+
+.social_icon {
+  margin-right: 20px;
+}
+
+.social_icon:hover {
+  color: theme("colors.text.disabled");
 }
 </style>
