@@ -4,32 +4,35 @@
     :class="theme"
   >
     <div class="h-1" />
-    <header class="flex justify-center select-none">
-      <div class="flex justify-center">
-        <g-image class="rounded-full w-10 h-10 shadow-xl" src="../logo.jpeg" />
-        <!-- <div class="ml-3 place-self-center text-lg text-text-secondary">GuillaumeLacoste</div> -->
-      </div>
-      <nav class="flex-grow flex justify-end align-middle">
+    <header>
+      <nav class="flex items-center flex-wrap">
+        <g-image class="rounded-full shadow-xl" width="40" height="40" quality="100" src="../logo.jpeg" />
+        <div class="flex-grow"/>
         <theme-switcher
           class="mr-5"
           :theme="theme"
           @themeUpdated="updateTheme"
         />
-        <g-link
-          v-for="(path, name) in navRoutes"
-          v-bind:key="name"
-          :class="
-            isCurrentRoute(path) ? 'text-text-primary border-b-4 border-primary pointer-events-none' : 'text-text-disabled'
-          "
-          class="nav_link relative mr-5 place-self-center"
-          :to="path"
-          >{{ name }}
-        </g-link>
-        <context-menu
-          title="Others"
-          :subItems="contextMenuSubItems"
-          class="nav_link relative text-text-disabled place-self-center"
-        />
+        <div class="sm:hidden">
+          <font-awesome
+            @click="navOpened = !navOpened"
+            class="cursor-pointer"
+            :icon="['fas', 'bars']"
+            size="lg"
+            :class="navOpened ? 'text-primary' : 'text-text-primary'"
+          />
+        </div>
+        <div class="sm:hidden" style="flex-basis: 100%" />
+        <div :class="!navOpened ? 'hidden sm:flex' : ''" class="flex flex-col mt-8 sm:mt-0 sm:flex-row justify-center items-center w-full sm:w-auto">
+          <g-link
+            v-for="(path, name, index) in navRoutes"
+            v-bind:key="name"
+            class="nav_link relative place-self-center mb-4 sm:mb-0"
+            :class="`${index < Object.values(navRoutes).length - 1 ? 'mr-0 sm:mr-5 ' : ''} ${isCurrentRoute(path) ? 'text-text-primary border-b-4 border-primary pointer-events-none' : 'text-text-disabled'}`"
+            :to="path"
+            >{{ name }}
+          </g-link>
+        </div>
       </nav>
     </header>
     <main class="">
@@ -91,6 +94,7 @@ export default {
 
   data() {
     return {
+      navOpened: false,
       theme: "",
       navRoutes: {
         Home: "/",
