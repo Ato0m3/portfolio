@@ -1,6 +1,6 @@
 <template>
   <div
-    class=" flex flex-col bg-background-theme text-text-primary h-full p-4 xl:pt-4 xl:p-0 xl:pl-64 xl:pr-64"
+    class=" flex flex-col bg-background-theme text-text-primary min-h-screen p-4 xl:pt-4 xl:p-0 xl:pl-64 xl:pr-64"
     :class="theme"
   >
     <div class="h-1" />
