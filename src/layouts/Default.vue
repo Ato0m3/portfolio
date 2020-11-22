@@ -35,7 +35,7 @@
         </div>
       </nav>
     </header>
-    <main class="">
+    <main class="flex-grow">
       <div class="text-primary text-5xl mt-8">{{title}}</div>
       <slot />
     </main>
